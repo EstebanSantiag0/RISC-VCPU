@@ -1,0 +1,72 @@
+# Xilinx ISE 14.7 — keep sources (*.vhd, main.sch, *.sym, RISC-VCPU.xise, docs/),
+# ignore everything ISE regenerates.
+
+# Netlist generated from main.sch by sch2hdl
+main.vhf
+main.jhd
+*.schbak
+*.schcmd
+sch2HdlBatchFile
+
+# Project-manager state and reports
+*.gise
+iseconfig/
+_xmsgs/
+*.cmd_log
+*.html
+*.xrpt
+*.xmsgs
+webtalk*.xml
+pepExtractor.prj
+*.spl
+
+# Synthesis (XST)
+xst/
+*.xst
+*.prj
+*.syr
+*.stx
+*.lso
+*.ngc
+*.ngr
+*.ngd
+*.bld
+
+# Implementation (translate / map / PAR / bitgen)
+_ngo/
+*.ncd
+*.pcf
+*.map
+*.mrp
+*.ngm
+*.par
+*.pad
+*_pad.csv
+*_pad.txt
+*.ptwx
+*.unroutes
+*.xpi
+*.twr
+*.twx
+*.bgn
+*.bit
+*.drc
+*.ut
+xlnx_auto_0_xdb/
+*_summary.xml
+*_usage.xml
+
+# Simulation (ISim)
+isim/
+*.exe
+*.wdb
+isim.cmd
+isim.log
+fuse.log
+fuseRelaunch.cmd
+xilinxsim.ini
+
+# Misc
+*.log
+*.bak
+*~
