@@ -128,6 +128,17 @@ Behavioral simulation (2026-10-26, 40 cycles, 20 ns clock) of the ROM's Fibonacc
 program gives `aluOutput` = 0 1 500 1 1 1 1 1 1 2 1 1 2 1 3 1 2 3 1 5 … 21 1 13 21 1 34,
 as expected.
 
+Fibonacci program (2026-10-26 rev.): x10/x11 = F(n-1)/F(n), x5 = 30 (limit),
+x6 = counter. Loop at 0x10, `bge x6 x5 16` exits to 0x28 (`beq x0 x0 0`, halt).
+Ends after ~172 cycles with x12 = F30 = 832040 (x10 = 317811, x11 = 514229).
+
+`sim_main.cmd` is the ISim command file (Simulate Behavioral Model → Process
+Properties → *Use Custom Simulation Command File*): clock 1→0, 1 µs period,
+`aluOutput` blue in signed decimal (`-radix dec`), x0–x31 from `/main/XLXI_4/regs(i)` as a
+group in signed decimal, runs 180 µs.
+Signals are recorded with `wave log` before `run` and added to the window after it, so
+ISim jumps the view to the latest time during the run, while the window is still empty.
+
 ## ISim on Arch Linux
 
 ISim compiles with `/usr/bin/gcc4` (GCC 4.9.4) and links with `-lgcc_s`. Arch

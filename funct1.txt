@@ -1,0 +1,11 @@
+    0      => x"00000513",  -- 0x00 addi x10 x0 0     F(n-1)
+    1      => x"00100593",  -- 0x04 addi x11 x0 1     F(n)
+    2      => x"03000293",  -- 0x08 addi x5 x0 48     limite (máximo)
+    3      => x"00100313",  -- 0x0C addi x6 x0 1      contador
+    4      => x"00b50633",  -- 0x10 add x12 x10 x11   loop: F(n+1)
+    5      => x"00130313",  -- 0x14 addi x6 x6 1
+    6      => x"00535863",  -- 0x18 bge x6 x5 16      -> fin (0x28)
+    7      => x"00b00533",  -- 0x1C add x10 x0 x11
+    8      => x"00c005b3",  -- 0x20 add x11 x0 x12
+    9      => x"fe0006e3",  -- 0x24 beq x0 x0 -20     -> loop (0x10)
+    10     => x"00000063",  -- 0x28 beq x0 x0 0       fin: se queda aqui

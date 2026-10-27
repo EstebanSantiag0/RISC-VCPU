@@ -26,16 +26,18 @@ architecture rtl of instr_rom is
   constant NOP : std_logic_vector(31 downto 0) := x"00000013";
 
   constant ROM : rom_array := (
-    0      => x"00000513",  -- 0x00 addi x10 x0 0
-    1      => x"00100593",  -- 0x04 addi x11 x0 1
-    2      => x"1f400293",  -- 0x08 addi x5 x0 500
-    3      => x"00100313",  -- 0x0C addi x6 x0 1
-    4      => x"00b50633",  -- 0x10 add x12 x10 x11
-    5      => x"00565863",  -- 0x14 bge x12 x5 16
-    6      => x"00b00533",  -- 0x18 add x10 x0 x11
-    7      => x"00c005b3",  -- 0x1C add x11 x0 x12
-    8      => x"fe0008e3",  -- 0x20 beq x0 x0 -16
-    9      => x"00000063",  -- 0x24 beq x0 x0 0
+    0      => x"00500513",  -- 0x00 addi x10 x0 5     n = 5
+    1      => x"00100593",  -- 0x04 addi x11 x0 1     constante 1
+    2      => x"02b50263",  -- 0x08 beq x10 x11 36    loop: n = 1 -> fin (0x2C)
+    3      => x"00157313",  -- 0x0C andi x6 x10 1     x6 = n impar?
+    4      => x"00030a63",  -- 0x10 beq x6 x0 20      par -> 0x24
+    5      => x"00a502b3",  -- 0x14 add x5 x10 x10    x5 = 2n
+    6      => x"00550533",  -- 0x18 add x10 x10 x5    n = 3n
+    7      => x"00b50533",  -- 0x1C add x10 x10 x11   n = 3n + 1
+    8      => x"fe0004e3",  -- 0x20 beq x0 x0 -24     -> loop (0x08)
+    9      => x"00b55533",  -- 0x24 srl x10 x10 x11   n = n / 2
+    10     => x"fe0000e3",  -- 0x28 beq x0 x0 -32     -> loop (0x08)
+    11     => x"00000063",  -- 0x2C beq x0 x0 0       fin: se queda aqui
     others => NOP
   );
 
